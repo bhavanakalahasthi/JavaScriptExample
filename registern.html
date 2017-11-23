@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	function validatefname(){
+		
+		var fname = document.getElementById("fname").value;
+		
+		if(fname == "" || fname == null){			
+			alert("please provide firstname");
+		}else if(fname.length < 4){
+			alert("firstname cannot be less than 4 characters");
+		}
+		
+	}
+	
+	function changebgcolor(elementRef){
+		//document.getElementById("fname").style.backgroundColor="#DCDCDC";
+		
+		elementRef.style.backgroundColor="#DCDCDC";	
+		
+	}
+	
+	function resetbgcolor(elementRef){
+		elementRef.style.backgroundColor="#FFFFFF";
+	}
+	
+	function contentchanged(elementRef){
+		alert(elementRef.value);
+	}
+	
+	var xmlhttp;
+	
+	function validateusername(){		
+		
+		var uname = document.getElementById("username").value;	
+		
+		if (window.XMLHttpRequest) {
+		    // code for modern browsers
+		    xmlhttp = new XMLHttpRequest();
+		 } else {
+		    // code for old IE browsers
+		    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		//adding request info to the xmlhttp request object
+		xmlhttp.open("GET","validateServ?username="+uname,true);
+		
+		//registering the callback function
+		xmlhttp.onreadystatechange=processResponse;
+		
+		xmlhttp.send();
+	}
+	
+	function processResponse(){
+		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){			
+			document.getElementById("message").innerHTML=xmlhttp.responseText;			
+		}
+	}
+	
+
+	
+	
+</script>
+
+</head>
+<body>
+
+	<h2 align="center">Register Form</h2>
+	
+	<form action="" onsubmit="validatefname()">
+		<div align="center">
+		<table>
+		
+		<tr>
+			<td align="left"><label>Username </label></td><td><input type="text" id="username" name="username" onchange="validateusername()"  onblur="resetbgcolor(this)" onfocus="changebgcolor(this)"></td>
+			<td><div id="message"></div></td>					
+		</tr>
+		
+		
+		<tr>
+			<td align="left"><label>Firstname </label></td><td><input type="text" id="fname" name="firstname" onchange="validatefname()" onblur="resetbgcolor(this)" onfocus="changebgcolor(this)"></td>		
+		</tr>
+		
+		<tr>
+			<td align="left"><label>Lastname  </label></td><td><input type="text" name="lastname" onblur="resetbgcolor(this)" onfocus="changebgcolor(this)"></td>
+		</tr>
+		<tr>
+			<td align="left"><label>Email     </label></td><td><input type="text" name="email" onblur="resetbgcolor(this)" onfocus="changebgcolor(this)"></td>
+			
+		</tr>
+		<tr>
+		<td align="left"><label>Gender    </label></td>		
+		<td>Female : <input type="radio" name="gender" value="female">
+		Male   : <input type="radio" name="gender" value="male"></td>
+		</tr>
+		
+		<tr>
+			<td><input type="submit" value="REGISTER"/></td>
+		</tr>
+		
+		</table>
+		</div>
+	</form>
+
+</body>
+</html>

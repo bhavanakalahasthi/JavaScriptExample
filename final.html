@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+
+function checkNum()
+{
+	var num= document.getElementById("number");
+	var checkr = /^([0-9]{2})+\-([0-9]{3})+\-([0-9]{4})+$/;
+		if(!checkr.test(num.value))
+			{
+			alert("please provide valid number");
+			
+			}
+		else
+			{
+			alert("successful")
+			}
+		
+	}
+
+function checkEmail() {
+
+    var email = document.getElementById("txtEmail");
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (!filter.test(email.value)) {
+    alert("Please provide a valid email address");
+  ;
+ }
+}
+</script>
+</head>
+<body>
+<label>number</label>
+<input type="text" id="number" /><br>
+<label>email</label>
+<input type="text" id="txtEmail"/>
+<input type="submit" name="submit" onclick="checkNum()"/>
+</body>
+</html>

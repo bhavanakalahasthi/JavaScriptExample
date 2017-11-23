@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>email validation</title>
+<script type="text/javascript">
+
+	function validateEmail(){
+		
+		var email = document.getElementById("email").value;
+		
+		if(email == "" || email == null){			
+			alert("required field");
+		}
+		
+		function regExpression()
+		{
+			var email = document.getElementById("email").value;
+			var emailReg = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+			
+			if(emailReg.test(email))
+				{
+			alert("check");
+			
+		}
+		}
+	}
+	</script>
+</head>
+<body>
+<form action="" onsubmit="validateEmail()" onsubmit="regExpression()">
+<table>
+<tr>
+			<td align="left"> <label>Email </label>
+			<td><input type="email" name="email" id="email" onchange="regExpression()" ></td>
+			
+		</tr>
+		<tr>
+			<td><input type="submit" value="REGISTER"/></td>
+		</tr>
+		
+	</table>	
+	</form>
+</body>
+</html>
